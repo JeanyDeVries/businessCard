@@ -1,0 +1,111 @@
+.BusinessCard{
+    width: 600px;
+    height: 350px;
+    background-color: rgb(101, 113, 112);
+    display: block;
+    position: absolute;
+    margin: auto;
+    padding: 15px;
+
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+
+    border: solid rgb(0, 0, 0) 2px;
+    box-shadow: 5px 10px #6c6c6c;
+}
+
+.personalInfo{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    height: 160px;
+}
+
+.personalInfo > div{
+    padding: 20px;
+    text-align: center;
+}
+
+.contactBlocks{
+    display: grid;
+    float:right;
+    grid-template-rows: 50% 50%;
+    grid-template-columns: 50% 50%;
+    overflow:hidden;
+}
+
+.contactBlocks > img{
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+.skills_detail{
+    width: 50%;
+    float:left;
+    display: flex;  
+    justify-content: space-between;
+    font-family: "Dosis", sans-serif;
+    color:white;
+    margin-top: -4px;
+}
+
+.bar{
+    position: relative;
+    width: 50%;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    margin-left: 40px;
+}
+
+.bar div{
+    position: relative;
+    width: 0;
+    height: 9px;
+    border-radius: 5px;
+    background-color: #a8bcc7;
+}
+
+.skills:not(:last-child){
+    margin-bottom: 20px;
+}
+
+#C-bar{
+    animation: c-fill 2s forwards;
+}
+
+@keyframes c-fill{
+    100%{
+        width: 80%;
+    }
+}
+
+#html-bar{
+    animation: html-fill 2s forwards;
+}
+
+@keyframes html-fill{
+    100%{
+        width: 40%;
+    }
+}
+
+#css-bar{
+    animation: css-fill 2s forwards;
+}
+
+@keyframes css-fill{
+    100%{
+        width: 30%;
+    }
+}
+
+#JS-bar{
+    animation: js-fill 2s forwards;
+}
+
+@keyframes js-fill{
+    100%{
+        width: 50%;
+    }
+}

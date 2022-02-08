@@ -23,7 +23,6 @@
 }
 
 .personalInfo > div{
-    padding: 20px;
     text-align: center;
 }
 
@@ -38,8 +37,13 @@
 }
 
 .contactBlocks > a{
-    padding-right: 20px;
-    padding-bottom: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    padding: 0px;
+}
+
+.contactBlocks img:hover{
+    opacity: 0.5;
 }
 
 .skills_detail{

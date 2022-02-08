@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@500&family=Zen+Kurenaido&display=swap');
 
+body{
+    overflow:hidden;
+}
+
 p{
     font-size: 15px;
     font-weight: 570;
@@ -157,5 +161,5 @@ h2{
     height: 30px;
     position:absolute;
     float: left;
-    margin-top: 430px;
+    margin-top: 445px;
 }

@@ -1,6 +1,14 @@
 var playerImg;
 var backgroundImg;
+var flagImg
+
 var hasStarted = false;
+var isJumping = false;
+var doneJumping = false;
+
+var jumpHeight = 1;
+let bottomPlayer = 240;
+let timeInAir = 0;
 
 window.onload = loadImages();
 
@@ -13,9 +21,18 @@ function loadImages(){
     backgroundImg = document.createElement("img");
     backgroundImg.src = "Images/dino_google_background.png";
     backgroundImg.classList.add('fullBoxSize');
+
+
+    flagImg = document.createElement("img");
+    flagImg.src = "Images/finishFlag.png";
+    flagImg.classList.add('finishFlag');
     
+
     placePlayer();
     placeBackground();
+    placeFinishFlag();
+
+
     checkInput();
 }
 
@@ -29,8 +46,12 @@ function placeBackground(){
     src.appendChild(backgroundImg);
 }
 
-function checkInput(){
+function placeFinishFlag(){
+    var src = document.getElementById("finish");
+    src.appendChild(flagImg);
+}
 
+function checkInput(){
     document.addEventListener("keyup", function(event) 
     {
         if(hasStarted) return;
@@ -39,7 +60,8 @@ function checkInput(){
         }
     });
 
-    document.addEventListener("keyup", function(event) {
+    document.addEventListener("keydown", function(event) {
+        if(isJumping || !hasStarted) return;
         if (event.keyCode === 32) {
             jumpPlayer();
         }
@@ -58,7 +80,31 @@ function movementPlayer(){
 
 function jumpPlayer()
 {
-    
+    let timerID = setInterval(function(){
+        if(bottomPlayer > 290 && timeInAir < 19){
+            timeInAir++;
+            isJumping = true
+            doneJumping = false;
+            return;
+        }
+        else if(timeInAir >= 10 && bottomPlayer >= 290){
+            let timerDownID = setInterval(function(){
+                bottomPlayer -= jumpHeight/3;
+                },20)
+            doneJumping = true;
+            isJumping = false;
+        }
+        else if(bottomPlayer <= 240){
+            doneJumping = true;
+            isJumping = false;
+            console.log("ground")
+        }
+
+        if(!doneJumping) return;
+        bottomPlayer += jumpHeight;
+        playerImg.style.bottom = bottomPlayer + "px";
+        isJumping = true;
+    },20)
 }
 
 function changePage(){

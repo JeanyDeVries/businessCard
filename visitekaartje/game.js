@@ -3,8 +3,8 @@ var backgroundImg;
 var flagImg
 
 var hasStarted = false;
-var isJumping = false;
-var doneJumping = false;
+let isJumping = false
+let gravity = 0.9
 
 var jumpHeight = 1;
 let bottomPlayer = 240;
@@ -32,7 +32,7 @@ function loadImages(){
     placeBackground();
     placeFinishFlag();
 
-
+    
     checkInput();
 }
 
@@ -70,40 +70,38 @@ function movementPlayer(){
     var pos = 0;
     hasStarted = true;
     timer = setInterval(function() {
-        pos++;
+        pos += 1.5;
         playerImg.style.left = pos+"px";
         if( pos == 2000) clearInterval(timer);
     },25);
 }
 
+let position = playerImg.style.bottom
 function jumpPlayer()
 {
-    let timerID = setInterval(function(){
-        if(bottomPlayer > 290 && timeInAir < 19){
-            timeInAir++;
-            isJumping = true
-            doneJumping = false;
-            return;
-        }
-        
-        if(timeInAir >= 10 && bottomPlayer >= 290){
-            let timerDownID = setInterval(function(){
-                bottomPlayer -= jumpHeight/3;
-                },20)
-            doneJumping = true;
-        }
-        
-        if(bottomPlayer <= 240 && isJumping){
-            doneJumping = true;
-            isJumping = false;
-            timeInAir = 0;
-            console.log("ground")
-        }
-
-        if(!doneJumping) return;
-        bottomPlayer += jumpHeight;
-        playerImg.style.bottom = bottomPlayer + "px";
-        isJumping = true;
+    let count = 0
+    console.log(position)
+    let timerId = setInterval(function () {
+      //move down
+      if (count === 20) {
+        clearInterval(timerId)
+        let downTimerId = setInterval(function () {
+          if (count === 0) {
+            clearInterval(downTimerId)
+            isJumping = false
+          }
+          position -= 2.5
+          count--
+          position = position * gravity
+          playerImg.style.bottom = position + 'px'
+        },20)
+  
+      }
+      //move up
+      position +=5
+      count++
+      position = position * gravity
+      playerImg.style.bottom = position + 'px'
     },20)
 }
 

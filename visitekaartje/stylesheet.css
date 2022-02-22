@@ -161,7 +161,7 @@ h2{
     height: 30px;
     position:absolute;
     float: left;
-    margin-top: 440px;
+    bottom: 34vh;
 }
 
 .finishFlag{
@@ -169,5 +169,5 @@ h2{
     height: 50px;
     margin-left: 95%;
     position: absolute;
-    margin-top: 430px;
+    margin-top: 61vh;
 }

@@ -55,9 +55,7 @@ function checkInput(){
     document.addEventListener("keyup", function(event) 
     {
         if(hasStarted) return;
-        if (event.keyCode === 13) {
             movementPlayer();
-        }
     });
 
     document.addEventListener("keydown", function(event) {
@@ -87,16 +85,18 @@ function jumpPlayer()
             doneJumping = false;
             return;
         }
-        else if(timeInAir >= 10 && bottomPlayer >= 290){
+        
+        if(timeInAir >= 10 && bottomPlayer >= 290){
             let timerDownID = setInterval(function(){
                 bottomPlayer -= jumpHeight/3;
                 },20)
             doneJumping = true;
-            isJumping = false;
         }
-        else if(bottomPlayer <= 240){
+        
+        if(bottomPlayer <= 240 && isJumping){
             doneJumping = true;
             isJumping = false;
+            timeInAir = 0;
             console.log("ground")
         }
 

@@ -4,7 +4,6 @@ var flagImg
 
 var hasStarted = false;
 let isJumping = false
-let gravity = 0.9
 
 var jumpHeight = 1;
 let bottomPlayer = 240;
@@ -76,11 +75,12 @@ function movementPlayer(){
     },25);
 }
 
-let position = playerImg.style.bottom
+let startPos = vhtopx(34);
 function jumpPlayer()
 {
     let count = 0
-    console.log(position)
+    let position = startPos;
+
     let timerId = setInterval(function () {
       //move down
       if (count === 20) {
@@ -90,9 +90,8 @@ function jumpPlayer()
             clearInterval(downTimerId)
             isJumping = false
           }
-          position -= 2.5
+          position -= 5
           count--
-          position = position * gravity
           playerImg.style.bottom = position + 'px'
         },20)
   
@@ -100,10 +99,13 @@ function jumpPlayer()
       //move up
       position +=5
       count++
-      position = position * gravity
       playerImg.style.bottom = position + 'px'
     },20)
 }
+
+function vhtopx(vh) {
+    return document.documentElement.clientHeight * (vh/100)
+  }
 
 function changePage(){
     //location.replace("https://www.w3schools.com");

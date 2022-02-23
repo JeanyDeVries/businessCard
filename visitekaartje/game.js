@@ -9,7 +9,18 @@ var jumpHeight = 1;
 let bottomPlayer = 240;
 let timeInAir = 0;
 
-window.onload = loadImages();
+window.onload = start();
+
+function start(){
+    loadImages();
+
+    placePlayer();
+    placeBackground();
+    placeFinishFlag();
+    placeObstacles();
+    
+    checkInput();
+}
 
 function loadImages(){
     playerImg = document.createElement("img");
@@ -25,14 +36,6 @@ function loadImages(){
     flagImg = document.createElement("img");
     flagImg.src = "Images/finishFlag.png";
     flagImg.classList.add('finishFlag');
-    
-
-    placePlayer();
-    placeBackground();
-    placeFinishFlag();
-
-    
-    checkInput();
 }
 
 function placePlayer(){
@@ -48,6 +51,10 @@ function placeBackground(){
 function placeFinishFlag(){
     var src = document.getElementById("finish");
     src.appendChild(flagImg);
+}
+
+function placeObstacles(){
+
 }
 
 function checkInput(){
@@ -80,6 +87,7 @@ function jumpPlayer()
 {
     let count = 0
     let position = startPos;
+    isJumping = true
 
     let timerId = setInterval(function () {
       //move down

@@ -2,13 +2,14 @@ var playerImg, backgroundImg, flagImg;
 var obstacle1Img, obstacle2Img, obstacle3Img, obstacle4Img
 
 var hasStarted = false;
-let isJumping = false
+var isJumping = false
+var restart = false;
 
 var jumpHeight = 1;
-let bottomPlayer = 240;
-let timeInAir = 0;
+var bottomPlayer = 240;
+var timeInAir = 0;
 
-let collisionDistance = 20;
+var collisionDistance = 20;
 
 window.onload = start();
 
@@ -164,8 +165,16 @@ function checkCollision(){
       
     if(distanceObstacle1 < collisionDistance || distanceObstacle2 < collisionDistance
         || distanceObstacle3 < collisionDistance || distanceObstacle4 < collisionDistance){
-            console.log("game over")
+            alert("Game Over");
+            restartGame();
     }
+}
+
+function restartGame(){
+    hasStarted = false;
+    clearInterval(timer)
+
+    playerImg.style.left = "0px"
 }
 
 function getPositionAtCenter(element) {

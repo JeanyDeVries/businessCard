@@ -168,6 +168,17 @@ function checkCollision(){
             alert("Game Over");
             restartGame();
     }
+
+    const distanceFinish = getDistanceBetweenElements(
+        flagImg,
+        playerImg
+    );
+
+    if(hasStarted && distanceFinish < collisionDistance){
+        alert("You won!");
+        hasStarted = false;
+        switchPage("index.html");
+    }
 }
 
 function restartGame(){
@@ -175,6 +186,10 @@ function restartGame(){
     clearInterval(timer)
 
     playerImg.style.left = "0px"
+}
+
+function switchPage(pageName){
+    window.location.replace("../visitekaartje/" + pageName);
 }
 
 function getPositionAtCenter(element) {

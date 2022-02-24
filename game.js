@@ -189,7 +189,7 @@ function restartGame(){
 }
 
 function switchPage(pageName){
-    window.location.replace("../businessCard/" + pageName);
+    window.location.replace("./" + pageName);
 }
 
 function getPositionAtCenter(element) {

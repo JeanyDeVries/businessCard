@@ -177,7 +177,7 @@ function checkCollision(){
     if(hasStarted && distanceFinish < collisionDistance){
         alert("You won!");
         hasStarted = false;
-        switchPage("index.html");
+        switchPage("card.html");
     }
 }
 
@@ -189,7 +189,7 @@ function restartGame(){
 }
 
 function switchPage(pageName){
-    window.location.replace("../visitekaartje/" + pageName);
+    window.location.replace("../" + pageName);
 }
 
 function getPositionAtCenter(element) {
